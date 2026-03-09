@@ -1,35 +1,34 @@
-# Institute FAQ Chatbot 🤖
+# 🎓 SIT Nagpur Institute FAQ Chatbot
 
-A lightweight, rule-based chatbot designed to provide instant responses to frequently asked questions (FAQs) for an educational institute. This project was developed as part of a college hackathon to demonstrate basic string manipulation and pattern-matching logic.
+A smart, purely client-side NLP Chatbot built using Vanilla HTML, CSS, and JavaScript. This project was developed as part of the **Hack-o-Week** college event, fulfilling 10 progressive problem statements from basic rule-based matching to advanced context handling and analytics.
 
-## 📌 Project Overview
+## 🚀 Features (Hack-o-Week 1 to 10)
 
-The **Institute FAQ Chatbot** acts as an official student help desk. It identifies keywords in user queries to provide specific information regarding college timings, fees, admissions, and more.
+* **Week 1 & 4 (Knowledge Base & TF-IDF):** Keyword-based scoring algorithm to find the most relevant FAQ answer.
+* **Week 2 (Preprocessing):** Cleans user input by lowercasing, removing punctuation, and filtering out noise (stopwords).
+* **Week 3 (Synonym Awareness):** Maps multiple terms (e.g., "fees", "tuition", "dues") to a singular intent root.
+* **Week 5 (Intent Classification):** Categorizes user input into intents like Admissions, Exams, Fees, or Hostels.
+* **Week 6 (Entity Extraction):** Extracts specific details from the query such as Engineering Branches (CS, AIML, Mech), Semesters, and Sub-topics (Cutoffs, Practicals).
+* **Week 7 (Context Memory):** Remembers the topic of conversation. (e.g., If you ask "What is the fee?", and then ask "And for CS?", it knows you are asking about CS fees).
+* **Week 8 (Fallbacks & Handover):** Gracefully handles unknown queries and offers human handover after consecutive failures.
+* **Week 9 (Multichannel Mockup):** Simulates different UI environments (Web, Mobile, WhatsApp).
+* **Week 10 (Analytics):** Silently logs user interactions, intents, and confidence scores for future improvements.
 
-### Key Features
+---
 
-* **15+ Predefined FAQ Rules:** Handles queries ranging from fees and scholarships to canteen and transport.
-* **Pattern Matching:** Uses keyword detection to understand user intent.
-* **Glassmorphism UI:** A modern, semi-transparent user interface with a background blur effect.
-* **Responsive Chat Window:** Automatically scrolls to the latest message for a seamless user experience.
+## 🧠 Architecture Flow Diagram
 
-## 🛠️ Tech Stack
-
-* **Frontend:** HTML5
-* **Styling:** CSS3 (Flexbox, Backdrop-filters)
-* **Logic:** Vanilla JavaScript (ES6)
-
-## 📂 File Structure
-
-* `index.html`: Contains the structural layout, including the chat display area and input fields.
-* `style.css`: Manages the visual presentation, fonts, and "glass" container effects.
-* `script.js`: Houses the logic for processing user input and matching keywords to responses.
-* `bg.jpg`: Background image for the site.
-
-## ⚙️ How It Works (Logic Flow)
-
-1. **Input:** The user enters a question in the text field.
-2. **Normalization:** The system converts the input string to lowercase to ensure the bot is not case-sensitive.
-3. **Pattern Matching:** The `chatbotReply()` function uses a series of `if...else if` statements and the `.includes()` method to scan for keywords.
-4. **Fallback:** If no keywords are matched, a default message is returned, guiding the user to stay on topic.
-5. **Output:** The result is dynamically appended to the `#chat-box` div.
+```mermaid
+graph TD
+    A[User Input] --> B[Preprocessing]
+    B -->|Remove Punctuation & Stopwords| C[Synonym Expansion]
+    C -->|Map Plurals/Synonyms| D[Entity Extraction]
+    D -->|Identify Course, Sem, Exam| E[Intent Matcher]
+    E -->|Calculate Keyword Scores| F{Match Found?}
+    F -- Yes --> G[Context Manager]
+    F -- No --> H[Fallback Handler]
+    G -->|Inject Entities & Keep Memory| I[Response Generator]
+    H -->|Human Handover if failed twice| I
+    I --> J[Channel Formatter]
+    J -->|Format for Web/WhatsApp| K[Analytics Logger]
+    K --> L[Bot Output to Screen]
