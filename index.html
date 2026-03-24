@@ -1,193 +1,126 @@
-import * as React from "react"
-import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react"
+# 🌏 AI Travel Planner
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+An **AI-powered travel planning web application** built with **React + Vite** that helps users discover destinations, generate personalized itineraries, and manage their trips in one place.
 
-const CarouselContext = React.createContext(null)
+The system integrates **AI-based itinerary generation**, **authentication flow**, and **modular page routing** to create a seamless trip-planning experience.
 
-function useCarousel() {
-  const context = React.useContext(CarouselContext)
 
-  if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />")
-  }
+## 📝 Project Overview
 
-  return context
-}
+This platform acts as a **smart travel assistant** that allows users to:
 
-const Carousel = React.forwardRef((
-  {
-    orientation = "horizontal",
-    opts,
-    setApi,
-    plugins,
-    className,
-    children,
-    ...props
-  },
-  ref
-) => {
-  const [carouselRef, api] = useEmblaCarousel({
-    ...opts,
-    axis: orientation === "horizontal" ? "x" : "y",
-  }, plugins)
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-  const [canScrollNext, setCanScrollNext] = React.useState(false)
+* Explore cities and tourist destinations
+* Generate **AI-driven travel itineraries**
+* Plan and save trips
+* View detailed trip itineraries
+* Discover nearby locations and attractions
 
-  const onSelect = React.useCallback((api) => {
-    if (!api) {
-      return
-    }
+The app is structured around **user interactions, AI itinerary generation, and backend data management**, creating a complete travel planning ecosystem.
 
-    setCanScrollPrev(api.canScrollPrev())
-    setCanScrollNext(api.canScrollNext())
-  }, [])
+## 📊 Project Flowchart
 
-  const scrollPrev = React.useCallback(() => {
-    api?.scrollPrev()
-  }, [api])
+Shows how users interact with the app, how the AI engine generates itineraries, and how data flows through the backend.
 
-  const scrollNext = React.useCallback(() => {
-    api?.scrollNext()
-  }, [api])
+<img width="1898" height="2182" alt="mermaid-diagram (2)" src="https://github.com/user-attachments/assets/d8c059d7-42e2-42ed-9514-d2213485172e" />
 
-  const handleKeyDown = React.useCallback((event) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault()
-      scrollPrev()
-    } else if (event.key === "ArrowRight") {
-      event.preventDefault()
-      scrollNext()
-    }
-  }, [scrollPrev, scrollNext])
 
-  React.useEffect(() => {
-    if (!api || !setApi) {
-      return
-    }
+## 🧩 Core Architecture
 
-    setApi(api)
-  }, [api, setApi])
+**Key modules:**
 
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
+* **App.jsx**
 
-    onSelect(api)
-    api.on("reInit", onSelect)
-    api.on("select", onSelect)
+  * Root component wrapping the app with:
 
-    return () => {
-      api?.off("select", onSelect)
-    };
-  }, [api, onSelect])
+    * `AuthProvider` (authentication)
+    * `QueryClientProvider` (state management)
+    * `React Router`
+  * Handles route rendering, authentication, and fallback pages.
 
-  return (
-    (<CarouselContext.Provider
-      value={{
-        carouselRef,
-        api: api,
-        opts,
-        orientation:
-          orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-        scrollPrev,
-        scrollNext,
-        canScrollPrev,
-        canScrollNext,
-      }}>
-      <div
-        ref={ref}
-        onKeyDownCapture={handleKeyDown}
-        className={cn("relative", className)}
-        role="region"
-        aria-roledescription="carousel"
-        {...props}>
-        {children}
-      </div>
-    </CarouselContext.Provider>)
-  );
-})
-Carousel.displayName = "Carousel"
+* **pages.config.js**
 
-const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
-  const { carouselRef, orientation } = useCarousel()
+  * Auto-generated page routing config
+  * Main pages: `Dashboard`, `PlanTrip`, `MyTrips`, `TripDetail`, `ExploreLocations`, `Cities`, `CityDetail`
 
-  return (
-    (<div ref={carouselRef} className="overflow-hidden">
-      <div
-        ref={ref}
-        className={cn(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          className
-        )}
-        {...props} />
-    </div>)
-  );
-})
-CarouselContent.displayName = "CarouselContent"
+* **Layout.jsx**
 
-const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
+  * Shared UI wrapper for all pages: header, sidebar, and consistent layout.
 
-  return (
-    (<div
-      ref={ref}
-      role="group"
-      aria-roledescription="slide"
-      className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        className
-      )}
-      {...props} />)
-  );
-})
-CarouselItem.displayName = "CarouselItem"
 
-const CarouselPrevious = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+## 🤖 AI Itinerary Engine
 
-  return (
-    (<Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn("absolute  h-8 w-8 rounded-full", orientation === "horizontal"
-        ? "-left-12 top-1/2 -translate-y-1/2"
-        : "-top-12 left-1/2 -translate-x-1/2 rotate-90", className)}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      {...props}>
-      <ArrowLeft className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>)
-  );
-})
-CarouselPrevious.displayName = "CarouselPrevious"
+Located in `src/lib/ai-planner.js`, this module **generates personalized trip plans** based on user input.
 
-const CarouselNext = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
+**Functions:**
 
-  return (
-    (<Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn("absolute h-8 w-8 rounded-full", orientation === "horizontal"
-        ? "-right-12 top-1/2 -translate-y-1/2"
-        : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90", className)}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      {...props}>
-      <ArrowRight className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
-    </Button>)
-  );
-})
-CarouselNext.displayName = "CarouselNext"
+1. `createItineraryPrompt(form)`
 
-export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext };
+   * Builds AI prompt from trip details: destination, dates, budget, style, interests.
+
+2. `generateAIItinerary(form)`
+
+   * Sends prompt to AI API (`VITE_AI_ENDPOINT`)
+   * Supports multiple response formats
+   * Falls back to local itinerary if API fails.
+
+3. `generateFallbackItinerary(form)`
+
+   * Creates deterministic day-wise itinerary when AI fails.
+
+**Helper:** `getTripDays(start,end)` calculates trip duration (default 3 days if invalid).
+
+
+## 🧭 Main Features
+
+* **PlanTrip.jsx**
+
+  * Trip input form with destination, dates, budget, style, and interests
+  * Triggers AI itinerary generation
+
+* **MyTrips.jsx & TripDetail.jsx**
+
+  * Save and view detailed trips
+
+* **ExploreLocations.jsx, Cities.jsx, CityDetail.jsx**
+
+  * Browse cities and nearby locations
+
+* **UI Components** (`src/components/UI`)
+
+  * Tailwind + Radix UI
+  * Buttons, Cards, Modals, Toasts, etc.
+
+
+## 🔐 Authentication & State
+
+* **AuthContext.jsx**
+
+  * Handles login state, loading, and error handling
+  * Includes `navigateToLogin()` for routing
+
+* **UserNotRegisteredError.jsx**
+
+  * Displays error for non-registered users
+
+
+## ⚙️ Technology Stack
+
+| Layer            | Technology                                                     |
+| ---------------- | -------------------------------------------------------------- |
+| Frontend         | React + Vite                                                   |
+| Routing          | React Router DOM                                               |
+| State Management | TanStack Query                                                 |
+| Styling          | Tailwind CSS                                                   |
+| UI Components    | Radix UI primitives                                            |
+| AI Integration   | External AI API                                                |
+| Environment      | Vite ENV variables (`VITE_AI_ENDPOINT`, `VITE_OPENAI_API_KEY`) |
+
+
+## 🔄 App Runtime Flow
+
+1. App starts → `AuthProvider` validates user session
+2. Routes are rendered if authentication is OK
+3. User submits trip in PlanTrip → AI generates itinerary
+4. If AI fails → fallback itinerary is generated
+5. Trip saved → visible in MyTrips
+6. User can browse cities, locations, and explore personalized recommendations
