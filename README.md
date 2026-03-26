@@ -55,6 +55,6 @@ This hackathon required rapidly switching contexts between different engineering
 
 ## 🚀 How to Navigate This Repository
 
-1. Click into any of the 4 project folders above.
+1. Click into any of the project branches.
 2. Read the specific `README.md` inside that folder for architecture diagrams and setup instructions.
 3. Run the web apps locally or click the provided Wokwi links to view the hardware simulations in your browser!
