@@ -1,4 +1,4 @@
-🚧 Forklift Safety Alert System using Ultrasonic Sensor (Wokwi Simulation)
+🚧 Forklift Safety Alert System using Ultrasonic Sensor
 
 🔗 Project Overview
 
