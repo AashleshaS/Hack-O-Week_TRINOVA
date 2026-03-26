@@ -1,127 +1,94 @@
-PIR Motion-Based Automatic Door System
+🚧 Forklift Safety Alert System using Ultrasonic Sensor (Wokwi Simulation)
 
+🔗 Project Overview
 
-📌 Project Overview
-
-This project demonstrates an automatic door control system using a PIR motion sensor, servo motor, and LED indicator. The system is simulated using the Wokwi platform, which allows real-time testing of embedded systems without physical hardware.
-The system detects human motion and automatically opens the door using a servo motor. A red LED indicates the door status, and all events are logged using the Serial Monitor.
-
+This project simulates a forklift safety system that detects obstacles using an ultrasonic sensor and alerts the operator using a buzzer. If the path is clear, a stepper motor drives the forklift forward. The system is implemented using Arduino and simulated on Wokwi.
 
 🎯 Objectives
 
-Detect human motion using PIR sensor
+Detect obstacles using ultrasonic sensor
 
-Automate door opening and closing
+Alert operator using buzzer
 
-Provide visual indication using LED
+Stop/allow movement based on distance
 
-Log system activity in simulation
-
+Simulate forklift movement using stepper motor
 
 🧰 Components Used
 
-Arduino Uno, 
+Arduino Uno
 
-PIR Motion Sensor (HC-SR501), 
+Ultrasonic Sensor (HC-SR04)
 
-Servo Motor (SG90), 
+Stepper Motor
 
-Red LED, 
+A4988 Stepper Driver
 
-220Ω Resistor and
+Buzzer
 
 Jumper Wires
 
-
 ⚙️ Working Principle
 
-The PIR (Passive Infrared) sensor detects motion by sensing changes in infrared radiation emitted by humans. When motion is detected, the sensor outputs a HIGH signal to the Arduino.
-The Arduino processes this signal and performs the following actions:
+The ultrasonic sensor measures the distance to nearby objects using sound waves. When an object is detected within a threshold distance (50 cm), the system triggers a buzzer alert.
 
-Rotates the servo motor to open the door, 
+If no obstacle is detected:
 
-Turns ON the red LED to indicate door is open, 
+The buzzer remains OFF
 
-Waits for a few seconds, 
+The stepper motor continues rotating (forklift moves forward)
 
-Closes the door and turns OFF the LED, 
+If an obstacle is detected:
 
-If no motion is detected, the door remains closed.
+The buzzer turns ON
 
+The forklift movement stops
 
 🔌 Circuit Connections
 
-PIR Sensor
+Ultrasonic Sensor (HC-SR04)
 
 VCC → 5V, 
 GND → GND, 
-OUT → Digital Pin D2
+TRIG → Pin 9, 
+ECHO → Pin 10
 
-Servo Motor
+Buzzer
 
-VCC → 5V, 
-GND → GND, 
-Signal → Digital Pin D9
+Positive → Pin 8, 
+Negative → GND
 
-LED
+Stepper Motor (via A4988)
 
-Anode → Digital Pin D7, 
-Cathode → Resistor → GND
-
-
-🔄 System Flow
-
-Motion Detected (PIR)
-
-↓
-
-Arduino Receives Signal
-
-↓
-
-Servo Rotates → Door Opens
-
-↓
-
-LED Turns ON
-
-↓
-
-Delay
-
-↓
-
-Servo Returns → Door Closes
-
-↓
-
-LED Turns OFF
+STEP → Pin 3, 
+DIR → Pin 4, 
+VMOT → External Power (if real hardware), 
+GND → GND
 
 🚀 Features
 
-Fully automated door system
+Real-time obstacle detection
 
-Motion-based activation (energy efficient)
+Collision prevention mechanism
 
-Visual indication using LED
+Automatic alert system
 
-Real-time logging via Serial Monitor
+Simulated forklift movement
 
-No hardware required (simulation-based)
-
+Low-cost and efficient safety solution
 
 🔮 Future Enhancements
 
-IoT integration (ThingSpeak / Blynk)
+Add LED indicators (Red = danger, Green = safe)
 
-Face recognition system
+Add LCD display for distance
 
-RFID-based access control
+IoT monitoring (ThingSpeak / Blynk)
 
-Auto-close based on continuous motion detection
+Automatic braking system
 
-Mobile notification system
+AI-based object detection
 
 📌 Conclusion
 
-This project successfully demonstrates a smart door automation system using a PIR sensor and servo motor. It ensures that the door operates only when motion is detected, making it efficient and suitable for real-world automation applications.
+This project demonstrates an effective forklift safety system using ultrasonic sensing and real-time alerts. It helps prevent accidents by notifying operators when obstacles are too close and stopping movement accordingly.
