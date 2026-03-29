@@ -1,60 +1,59 @@
-# 🚀 Hack-o-Week Portfolio: 
+# 🚀 Hack-o-Week Portfolio: AI & IoT Systems
 
-Welcome to the master repository for our **Hack-o-Week** submissions. 
+Welcome to the central repository for my **Hack-o-Week** projects. 
 
-This portfolio demonstrates a comprehensive capability to build intelligent software solutions and integrate them with simulated hardware environments.
-
----
-
+-----
 ## 📂 Project Directory
 
-Below is a high-level summary of the four projects developed during this event. *(Navigate to the respective folders for detailed READMEs, flowcharts, and setup instructions for each project).*
+### 🗺️ 1. AI Travel Planner (Full-Stack React)
 
-###  SIT Nagpur Institute FAQ Chatbot (NLP/JavaScript)
-A smart, purely client-side NLP Chatbot built using Vanilla HTML, CSS, and JavaScript. It progressed through 10 evolutionary problem statements to handle complex institute queries.
-* **Key Features:** Synonym mapping, TF-IDF scoring, context/memory handling across follow-up questions, fallback handovers, and silent analytics logging.
-* **Tech Stack:** Vanilla JS, HTML5, CSS3, DOM Manipulation.
+An intelligent travel assistant that generates personalized, day-by-day itineraries using AI.
 
-### 1️⃣ AI Travel Planner (React + Vite)
-An intelligent, full-stack travel planning web application that helps users discover destinations and generate highly personalized, day-by-day AI itineraries.
-* **Key Features:** AI-driven itinerary generation, secure authentication flow, trip saving/management, and fallback deterministic routing if the AI API fails.
-* **Tech Stack:** React, Vite, Tailwind CSS, Radix UI, TanStack Query, External AI APIs.
+  * **Key Innovation:** Implemented a **Deterministic Fallback Engine** that generates structured itineraries even if the external AI API fails, ensuring 100% uptime.
+  * **Core Tech:** React + Vite, Tailwind CSS, TanStack Query, Radix UI.
+  * **Architecture:** Modular routing with a secure `AuthProvider` for session management.
 
-### 2️⃣ PIR Motion-Based Automatic Door System (IoT/Arduino)
-A smart door automation system simulated entirely in Wokwi, designed to detect human motion and actuate a physical response.
-* **Key Features:** Real-time motion detection, automated servo motor actuation (door opening/closing), visual LED indicators, and Serial Monitor activity logging.
-* **Tech Stack:** Arduino Uno, C++, Wokwi Simulator, PIR Sensor (HC-SR04), Servo Motor (SG90).
+### 🏗️ 2. Industrial Forklift Safety System (IoT/Embedded)
 
-### 3️⃣ Forklift Safety Alert System (IoT/Arduino)
-An industrial safety prototype simulating a forklift that detects obstacles using sound waves and automatically halts movement to prevent collisions.
-* **Key Features:** Distance measuring threshold logic, automated stepper motor halting, and real-time auditory buzzer alerts for operators.
-* **Tech Stack:** Arduino Uno, C++, Wokwi Simulator, Ultrasonic Sensor (HC-SR04), Stepper Motor (A4988).
+A mission-critical safety prototype designed to prevent warehouse collisions using ultrasonic wave detection.
 
----
+  * **Key Innovation:** Integrated a **Real-time Halting Mechanism** that overrides motor movement (Stepper Motor) the moment an obstacle is detected within 50cm.
+  * **Core Tech:** Arduino Uno (C++), HC-SR04 Ultrasonic Sensor, A4988 Driver, Wokwi Simulation.
+  * **Safety Features:** Automated auditory buzzers and instant motor-stop logic.
+
+### 🚪 3. PIR Motion-Based Smart Door (IoT/Automation)
+
+An energy-efficient building automation system that manages entry points based on human infrared heat signatures.
+
+  * **Key Innovation:** Uses **State-based Logic** to manage a Servo-actuated door, including a visual LED status indicator and a cooldown delay to prevent mechanical wear.
+  * **Core Tech:** Arduino Uno (C++), PIR HC-SR501, SG90 Servo, Wokwi.
+  * **Efficiency:** Motion-only activation significantly reduces power consumption compared to manual or timed systems.
+
+-----
 
 ## 🛠️ Unified Technology Stack
 
-This hackathon required rapidly switching contexts between different engineering disciplines:
+This hackathon required a rapid context-shift between web architecture and electrical engineering:
 
-| Discipline | Technologies Used |
+| Category | Tools & Technologies |
 | :--- | :--- |
-| **Frontend Web** | React, Vite, Tailwind CSS, HTML, CSS, Radix UI |
-| **Backend & Logic**| Vanilla JavaScript, REST APIs, TanStack Query |
-| **AI & NLP** | Custom TF-IDF Algorithms, LLM API Integration |
-| **Hardware & IoT** | Arduino Uno, C++, Wokwi Simulation, Various Sensors & Actuators |
+| **Frontend & UX** | React, Vite, Tailwind CSS, Radix UI, Lucide Icons |
+| **State & Data** | TanStack Query, React Router, REST APIs |
+| **Embedded Systems** | C++, Arduino IDE, Wokwi Simulation |
+| **Hardware Logic** | Pulse-timing (Ultrasonic), IR Sensing (PIR), PWM (Servos) |
 
----
+-----
 
-## 🎯 Key Achievements & Learnings
+## 🎯 Engineering Achievements
 
-1. **Versatility:** Successfully transitioned from building DOM-manipulating Javascript algorithms to writing embedded C++ for microcontrollers within the same event.
-2. **Algorithm Design:** Built a custom stemming and context-memory algorithm from scratch without relying on heavy Python libraries like NLTK.
-3. **Robust Architecture:** Engineered systems with "graceful degradation"—meaning if the AI API fails in the Travel Planner, or the user types gibberish in the Chatbot, the systems cleanly fall back to deterministic responses rather than crashing.
+1.  **Hardware-Software Synergy:** Demonstrated the ability to write high-level asynchronous JavaScript for the web and low-level synchronous C++ for microcontrollers.
+2.  **Robust Error Handling:** Every project includes a "Failure Mode"—the Travel Planner has a fallback itinerary, and the IoT systems have default "Safe States" (Brakes engaged/Door closed).
+3.  **Simulation Mastery:** Successfully modeled complex hardware interactions (Stepper drivers, sensors, and servos) entirely in a virtual environment, proving rapid prototyping capabilities.
 
----
+-----
 
-## 🚀 How to Navigate This Repository
+## 🚀 How to Navigate This Repo
 
-1. Click into any of the project branches.
-2. Read the specific `README.md` inside that folder for architecture diagrams and setup instructions.
-3. Run the web apps locally or click the provided Wokwi links to view the hardware simulations in your browser!
+1.  **For Web:** Navigate to `/AI-Travel-Planner`, run `npm install` and `npm run dev`.
+2.  **For IoT:** Navigate to `/Forklift-Safety` or `/Smart-Door` and click the **Wokwi Simulation Link** in the local README to see the circuit in action.
+
