@@ -1,6 +1,8 @@
 # 🚀 Hack-o-Week Portfolio: AI & IoT Systems
 
-Welcome to the central repository for my **Hack-o-Week** projects. 
+Welcome to the central repository for my **Hack-o-Week** projects 
+
+Note: Every project has a seperate branch.
 
 -----
 ## 📂 Project Directory
