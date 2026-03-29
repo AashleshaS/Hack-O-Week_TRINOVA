@@ -1,6 +1,6 @@
-# 🚀 Hack-o-Week Portfolio: From Embedded IoT to AI Web Apps
+# 🚀 Hack-o-Week Portfolio: 
 
-Welcome to the master repository for our **Hack-o-Week** submissions. This repository showcases a diverse collection of four distinct projects that span across **Natural Language Processing (NLP)**, **Embedded Systems & IoT Simulations**, and **Full-Stack AI Web Development**. 
+Welcome to the master repository for our **Hack-o-Week** submissions. 
 
 This portfolio demonstrates a comprehensive capability to build intelligent software solutions and integrate them with simulated hardware environments.
 
@@ -10,22 +10,22 @@ This portfolio demonstrates a comprehensive capability to build intelligent soft
 
 Below is a high-level summary of the four projects developed during this event. *(Navigate to the respective folders for detailed READMEs, flowcharts, and setup instructions for each project).*
 
-### 1️⃣ SIT Nagpur Institute FAQ Chatbot (NLP/JavaScript)
+###  SIT Nagpur Institute FAQ Chatbot (NLP/JavaScript)
 A smart, purely client-side NLP Chatbot built using Vanilla HTML, CSS, and JavaScript. It progressed through 10 evolutionary problem statements to handle complex institute queries.
 * **Key Features:** Synonym mapping, TF-IDF scoring, context/memory handling across follow-up questions, fallback handovers, and silent analytics logging.
 * **Tech Stack:** Vanilla JS, HTML5, CSS3, DOM Manipulation.
 
-### 2️⃣ AI Travel Planner (React + Vite)
+### 1️⃣ AI Travel Planner (React + Vite)
 An intelligent, full-stack travel planning web application that helps users discover destinations and generate highly personalized, day-by-day AI itineraries.
 * **Key Features:** AI-driven itinerary generation, secure authentication flow, trip saving/management, and fallback deterministic routing if the AI API fails.
 * **Tech Stack:** React, Vite, Tailwind CSS, Radix UI, TanStack Query, External AI APIs.
 
-### 3️⃣ PIR Motion-Based Automatic Door System (IoT/Arduino)
+### 2️⃣ PIR Motion-Based Automatic Door System (IoT/Arduino)
 A smart door automation system simulated entirely in Wokwi, designed to detect human motion and actuate a physical response.
 * **Key Features:** Real-time motion detection, automated servo motor actuation (door opening/closing), visual LED indicators, and Serial Monitor activity logging.
 * **Tech Stack:** Arduino Uno, C++, Wokwi Simulator, PIR Sensor (HC-SR04), Servo Motor (SG90).
 
-### 4️⃣ Forklift Safety Alert System (IoT/Arduino)
+### 3️⃣ Forklift Safety Alert System (IoT/Arduino)
 An industrial safety prototype simulating a forklift that detects obstacles using sound waves and automatically halts movement to prevent collisions.
 * **Key Features:** Distance measuring threshold logic, automated stepper motor halting, and real-time auditory buzzer alerts for operators.
 * **Tech Stack:** Arduino Uno, C++, Wokwi Simulator, Ultrasonic Sensor (HC-SR04), Stepper Motor (A4988).
