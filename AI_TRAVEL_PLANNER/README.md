@@ -21,37 +21,7 @@ The app is structured around **user interactions, AI itinerary generation, and b
 
 Shows how users interact with the app, how the AI engine generates itineraries, and how data flows through the backend.
 
-flowchart TD
-    A[User Opens App] --> B{Authenticated?}
-
-    B -->|No| C[Login / Signup]
-    B -->|Yes| D[Dashboard]
-
-    D --> E[Plan a Trip]
-    E --> F[Enter Trip Details]
-
-    F --> G[Generate Itinerary]
-
-    G --> H{AI Available?}
-    H -->|Yes| I[AI Generates Plan]
-    H -->|No| J[Fallback Itinerary]
-
-    I --> K[Show Itinerary]
-    J --> K
-
-    K --> L[Save Trip]
-    L --> M[View in My Trips]
-
-    D --> N[Explore Cities]
-    N --> O[View Locations]
-
-    %% Styling
-    style A fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    style D fill:#e8f5e9,stroke:#43a047,stroke-width:2px
-    style E fill:#fff3e0,stroke:#fb8c00,stroke-width:2px
-    style G fill:#ede7f6,stroke:#8e24aa,stroke-width:2px
-    style K fill:#e0f7fa,stroke:#00acc1,stroke-width:2px
-    style M fill:#fce4ec,stroke:#d81b60,stroke-width:2px
+<img width="1078" height="2585" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/5412edd7-251d-4527-a06d-adb99237c243" />
 
 
 ## 🧩 Core Architecture
