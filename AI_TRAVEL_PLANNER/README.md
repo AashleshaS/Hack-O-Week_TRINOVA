@@ -155,4 +155,3 @@ Located in `src/lib/ai-planner.js`, this module **generates personalized trip pl
 5. Trip saved → visible in MyTrips
 6. User can browse cities, locations, and explore personalized recommendations
 
-
