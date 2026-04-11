@@ -86,37 +86,3 @@ AI-based object detection
 
 This project demonstrates an effective forklift safety system using ultrasonic sensing and real-time alerts. It helps prevent accidents by notifying operators when obstacles are too close and stopping movement accordingly.
 
-### 🔄 System Logic Flowchart
-
-```mermaid
-graph TD
-    %% Styling
-    classDef startEnd fill:#2c3e50,stroke:#2c3e50,color:#fff,stroke-width:2px;
-    classDef sensing fill:#ebf5fb,stroke:#2e86c1,color:#212f3d,stroke-width:1px;
-    classDef decision fill:#fef9e7,stroke:#f1c40f,color:#7d6608,stroke-width:2px;
-    classDef action fill:#eafaf1,stroke:#27ae60,color:#145a32,stroke-width:2px;
-    classDef idle fill:#f4f6f7,stroke:#909497,color:#2c3e50,stroke-dasharray: 5 5;
-
-    %% Workflow
-    A([Start System]) --> B[Initialize LCD & Ultrasonic Sensor]
-    B --> C[Set Object Count = 0]
-    C --> D[Measure Distance via Ultrasonic Pulse]
-    
-    D --> E{Is Object <br/> Detected?}
-    
-    %% Path: Detected
-    E -- YES --> F[Increment Count: Count + 1]
-    F --> G[Update LCD: Display New Count]
-    G --> H[Wait for Object to Pass <br/> 'Debounce Delay']
-    H --> D
-
-    %% Path: Not Detected
-    E -- NO --> I[Display Current Count <br/> 'Scanning...']
-    I --> D
-
-    %% Applying Classes
-    class A startEnd;
-    class B,C,D sensing;
-    class E decision;
-    class F,G,H action;
-    class I idle;
