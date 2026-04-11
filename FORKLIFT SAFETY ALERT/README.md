@@ -1,6 +1,6 @@
 🚧 Forklift Safety Alert System using Ultrasonic Sensor
 
-##🔗 Project Overview
+🔗 Project Overview
 
 This project simulates a forklift safety system that detects obstacles using an ultrasonic sensor and alerts the operator using a buzzer. If the path is clear, a stepper motor drives the forklift forward. The system is implemented using Arduino and simulated on Wokwi.
 
@@ -43,45 +43,6 @@ If an obstacle is detected:
 The buzzer turns ON
 
 The forklift movement stops
-
-### 🔄 System Logic Flowchart
-
-```mermaid
-graph TD
-    %% Styling
-    classDef startEnd fill:#2c3e50,stroke:#2c3e50,color:#fff,stroke-width:2px;
-    classDef sensing fill:#ebf5fb,stroke:#2e86c1,color:#212f3d,stroke-width:1px;
-    classDef decision fill:#fef9e7,stroke:#f1c40f,color:#7d6608,stroke-width:2px;
-    classDef action fill:#fdedec,stroke:#e74c3c,color:#922b21,stroke-width:2px;
-    classDef normal fill:#eafaf1,stroke:#27ae60,color:#145a32,stroke-width:1px;
-
-    %% Workflow
-    A([Start System]) --> B[Initialize Ultrasonic Sensor & Motors]
-    B --> C[Emit Ultrasonic Pulse]
-    C --> D[Measure Echo Return Time]
-    D --> E[/Calculate Distance in cm/]
-    
-    E --> F{Is Distance <br/> <= 50cm?}
-
-    %% Path: Object Detected
-    F -- YES --> G[Trigger Piezo Buzzer Alert]
-    G --> H[Emergency Stop: Halt Stepper Motor]
-    H --> I[Log Serial: 'OBJECT DETECTED - HALTING']
-    I --> C
-
-    %% Path: Clear
-    F -- NO --> J[Maintain/Resume Motor Rotation]
-    J --> K[Deactivate Buzzer]
-    K --> L[Log Serial: 'PATH CLEAR']
-    L --> C
-
-    %% Applying Classes
-    class A startEnd;
-    class B,C,D sensing;
-    class E normal;
-    class F decision;
-    class G,H,I action;
-    class J,K,L normal;
 
 🔌 Circuit Connections
 
